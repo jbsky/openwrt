@@ -1,7 +1,7 @@
 #!/bin/sh
 UID=$(id -u)
 
-docker run ${OPTS:-} --rm \
+docker run --cpus=8 ${OPTS:-} --rm \
   -ti \
   -v $PWD/bin:/home/openwrt/bin \
   -v $PWD/build_dir:/home/openwrt/build_dir \

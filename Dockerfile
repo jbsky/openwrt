@@ -11,10 +11,11 @@ RUN useradd -m openwrt &&\
 USER openwrt
 WORKDIR /home/openwrt
 
-ENV OPENWRT_VERSION=18.06.2
+ENV OPENWRT_VERSION=21.02.1
 RUN wget -O - https://github.com/openwrt/openwrt/archive/v${OPENWRT_VERSION}.tar.gz | \
   tar --strip=1 -xzvf - && \
-  scripts/feeds update -a
+  scripts/feeds update -a && \
+  scripts/feeds install -a
 
 
 COPY --chown=openwrt:openwrt config .config
